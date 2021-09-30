@@ -2,26 +2,13 @@
   "name": "desafio-reactjs",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.0.1"
-  },
+  "license": "MIT",
   "scripts": {
     "start": "react-scripts start",
+    "server": "json-server data.json --port 3333",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest --watchAll",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [
@@ -34,5 +21,30 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "dependencies": {
+    "axios": "^0.21.4",
+    "json-server": "^0.16.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "sass": "^1.42.1",
+    "web-vitals": "^1.0.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-jsx-a11y": "6.4.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "7.21.5",
+    "eslint-plugin-react-hooks": "4",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "26.6.0",
+    "prettier": "^2.4.1"
   }
 }
