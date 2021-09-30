@@ -1,6 +1,16 @@
+import { BrowserRouter } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+
+import Routes from './routes'
+
+import './styles/main.scss'
+
 function App() {
   return (
-    <h1>hello world</h1>
+    <BrowserRouter>
+      <Routes />
+      <ToastContainer autoClose={3000} />
+    </BrowserRouter>
   );
 }
 
