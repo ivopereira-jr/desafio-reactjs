@@ -3,6 +3,8 @@
   --body-background: #e9ecef;
   --card-background: white;
   --title-color: #333;
+  --description-color: #999;
+  --border-color: #eee;
 }
 
 * {
@@ -17,7 +19,7 @@ body {
 }
 
 body, input, button {
-  font-size: 0.875rem Roboto, sans-serif;
+  font: 0.875rem Roboto, sans-serif;
 }
 
 a {
@@ -32,4 +34,10 @@ ul {
 button {
   border: 0;
   cursor: pointer;
+  background: none;
+}
+
+strong {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
 }
