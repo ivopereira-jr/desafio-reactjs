@@ -7,7 +7,7 @@ import './styles.scss';
 export default function Header() {
   return (
     <header className="container">
-      <div className="content">
+      <nav className="header-content">
         <Link to="/">
           <img src="/assets/logo.png" alt="logo marca playstation store" />
         </Link>
@@ -19,7 +19,7 @@ export default function Header() {
           </div>
           <MdAddShoppingCart size={36} color="#333" />
         </Link>
-      </div>
+      </nav>
     </header>
   );
 }
