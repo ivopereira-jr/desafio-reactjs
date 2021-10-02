@@ -1,0 +1,100 @@
+table {
+  width: 100%;
+
+  thead th {
+    color: var(--description-color);
+    text-align: left;
+    text-transform: uppercase;
+    padding: 12px;
+
+    &:nth-child(3) {
+      text-align: center;
+    }
+  }
+
+  tbody td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  img {
+    height: 100px;
+  }
+
+  strong {
+    color: var(--title-color);
+    display: block;
+  }
+
+  span {
+    display: block;
+    margin-top: 5px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .quant-actions {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    > button {
+      color: #e72626;
+      margin-top: 6px;
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+
+      svg {
+        color: #e72626;
+        position: relative;
+        bottom: 2px;
+        transition: color 0.2s;
+      }
+
+      &:hover {
+        svg {
+          color: darken($color: #e72626, $amount: 10);
+        }
+      }
+    }
+
+    > div {
+      display: flex;
+      align-items: center;
+
+      input {
+        width: 50px;
+        padding: 6px;
+        color: #666;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        text-align: center;
+      }
+
+      button {
+        padding: 6px;
+
+        svg {
+          color: #777;
+          transition: color 0.2s;
+        }
+
+        &:hover {
+          svg {
+            color: darken($color: #777, $amount: 15);
+          }
+        }
+
+        &:disabled {
+          svg {
+            color: lighten($color: #777, $amount: 15);
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+  }
+}
