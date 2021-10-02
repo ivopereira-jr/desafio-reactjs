@@ -1,94 +1,106 @@
-import {
-  MdRemoveCircleOutline,
-  MdAddCircleOutline,
-  MdDelete,
-} from 'react-icons/md';
+/* eslint-disable no-param-reassign */
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { MdShoppingCart } from 'react-icons/md';
+import { useCart } from '../../hooks/useCart.jsx';
+
+import ProductsCartTable from '../../components/ProductsCartTable/index.jsx';
+import { formatPrice } from '../../utils/format.js';
 
 import '../../styles/assistants.scss';
 import './styles.scss';
 
 export default function Cart() {
+  const { cart } = useCart();
+  const cartSize = cart.length;
+  const [transportFree, setTransportFree] = useState(false);
+
+  const cartFormatted = cart.map(product => ({
+    ...product,
+    priceFormatted: formatPrice(product.price),
+    subTotal: formatPrice(product.amount * product.price),
+  }));
+
+  const productsCostTotal = cart.reduce(
+    (sumTotal, product) => sumTotal + product.amount * product.price,
+    0
+  );
+
+  const transportCost = formatPrice(
+    cart.reduce((sumTotal, product) => sumTotal + product.amount * 10, 0)
+  );
+
+  const totalCost = formatPrice(
+    cart.reduce(
+      (sumTotal, product) =>
+        sumTotal + product.amount * 10 + product.amount * product.price,
+      0
+    )
+  );
+
+  useEffect(() => {
+    if (productsCostTotal > 250) {
+      setTransportFree(true);
+    } else {
+      setTransportFree(false);
+    }
+  }, [productsCostTotal]);
+
   return (
-    <main className="container cart-content">
-      <div>
-        <section className="list-cart-products">
-          <table>
-            <thead>
-              <tr>
-                <th aria-label="product image" />
-                <th>produto</th>
-                <th>quantidade</th>
-                <th>subtotal</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <img src="" alt="" />
-                </td>
-                <td>
-                  <strong>fifa 14</strong>
-                  <span>R$&nbsp; 0.00</span>
-                </td>
-                <td>
-                  <div className="quant-actions">
-                    <div>
-                      <button type="button">
-                        <MdRemoveCircleOutline size={20} />
-                      </button>
-                      <input
-                        type="text"
-                        data-testid="product-amount"
-                        readOnly
-                      />
-                      <button type="button">
-                        <MdAddCircleOutline size={20} />
-                      </button>
-                    </div>
-                    <button type="button">
-                      <MdDelete size={20} />
-                      remover
-                    </button>
-                  </div>
-                </td>
-                <td>
-                  <strong>R$&nbsp; 00.00</strong>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+    <>
+      {cartSize === 0 ? (
+        <main className="empty-cart">
+          <div className="empty-cart-content">
+            <h2>O seu carrinho está vazio.</h2>
+            <Link to="/">
+              <button type="button">
+                <MdShoppingCart size={20} color="#FFF" />
+                continuar comprando
+              </button>
+            </Link>
+          </div>
+        </main>
+      ) : (
+        <main className="container cart-content">
+          <div className="list-cart-container">
+            <section className="list-cart-products card">
+              <ProductsCartTable products={cartFormatted} />
 
-          <footer>
-            <p>O frete é grátis para compras acima de R$ 250,00.</p>
-          </footer>
-        </section>
-      </div>
+              <footer>
+                <p>O frete é grátis para compras acima de R$ 250,00.</p>
+              </footer>
+            </section>
+          </div>
 
-      <section className="checkout">
-        <header>
-          <h2>checkout</h2>
-        </header>
+          <section className="checkout card">
+            <header>
+              <h2>checkout</h2>
+            </header>
 
-        <div>
-          <span>
-            Valor dos Produtos:
-            <strong>R$&nbsp; 00.00</strong>
-          </span>
-          <span>
-            Frete:
-            <strong>R$&nbsp; 00.00</strong>
-          </span>
-          <span>
-            Total:
-            <strong>R$&nbsp; 00.00</strong>
-          </span>
-        </div>
+            <div>
+              <span>
+                Valor dos Produtos:
+                <strong>{formatPrice(productsCostTotal)}</strong>
+              </span>
+              <span>
+                Frete:
+                <strong>{transportFree ? 'grátis' : transportCost}</strong>
+              </span>
+              <span>
+                Total:
+                <strong>
+                  {transportFree ? formatPrice(productsCostTotal) : totalCost}
+                </strong>
+              </span>
+            </div>
 
-        <footer>
-          <button type="button">ir para pagamento</button>
-          <button type="button">continuar comprando</button>
-        </footer>
-      </section>
-    </main>
+            <footer>
+              <button type="button">ir para pagamento</button>
+              <button type="button">continuar comprando</button>
+            </footer>
+          </section>
+        </main>
+      )}
+    </>
   );
 }
