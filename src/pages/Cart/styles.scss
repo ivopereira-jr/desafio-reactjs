@@ -112,39 +112,43 @@
   }
 
   footer {
-    padding-top: 25px;
-
+    padding-top: 40px;
     display: flex;
     justify-content: center;
     flex-direction: column;
     row-gap: 15px;
 
     button {
-      color: #fff;
+      width: 100%;
       border: 0;
       border-radius: 4px;
       padding: 12px 20px;
       font-size: 1.125rem;
       font-weight: bold;
       text-transform: uppercase;
+    }
 
-      &:nth-child(1) {
-        background-color: #0070cc;
-        transition: background-color 0.2s;
+    > button {
+      color: #fff;
+      background-color: #0070cc;
+      transition: background-color 0.2s;
 
-        &:hover {
-          background: darken($color: #0070cc, $amount: 08);
-        }
+      &:hover {
+        background: darken($color: #0070cc, $amount: 08);
       }
+    }
 
-      &:nth-child(2) {
+    > a {
+      width: 100%;
+
+      button {
         color: #0070cc;
         background-color: #fff;
         border: 2px solid #0070cc;
         transition: opacity 0.2s;
 
         &:hover {
-          opacity: 0.7;
+          opacity: 0.6;
         }
       }
     }
