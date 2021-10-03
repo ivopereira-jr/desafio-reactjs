@@ -1,7 +1,24 @@
+.order-products {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  column-gap: 10px;
+  font-size: 1.128rem;
+
+  select {
+    border-radius: 4px;
+    background-color: var(--card-background);
+    border: 2px solid #dddddd;
+    padding: 4px 8px;
+    font-size: 1rem;
+  }
+}
+
 .productsList {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
+  padding-top: 40px;
 
   li {
     display: flex;
