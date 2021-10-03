@@ -96,7 +96,9 @@ export default function Cart() {
 
             <footer>
               <button type="button">ir para pagamento</button>
-              <button type="button">continuar comprando</button>
+              <Link to="/">
+                <button type="button">continuar comprando</button>
+              </Link>
             </footer>
           </section>
         </main>
