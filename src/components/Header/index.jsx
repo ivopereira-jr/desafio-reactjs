@@ -19,7 +19,9 @@ export default function Header() {
         <Link to="cart" className="cart">
           <div>
             <strong>Meu carrinho</strong>
-            {cartSize === 1 ? `${cartSize} item` : `${cartSize} itens`}
+            <span data-testid="cart-size">
+              {cartSize === 1 ? `${cartSize} item` : `${cartSize} itens`}
+            </span>
           </div>
           <MdAddShoppingCart size={36} color="#333" />
         </Link>
