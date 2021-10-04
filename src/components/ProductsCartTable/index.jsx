@@ -35,7 +35,7 @@ export default function ProductsCartTable({ products }) {
       </thead>
       <tbody>
         {products.map(product => (
-          <tr key={product.id}>
+          <tr key={product.id} data-testid="product">
             <td>
               <img
                 src={`/assets/${product.image}`}
@@ -51,6 +51,8 @@ export default function ProductsCartTable({ products }) {
                 <div>
                   <button
                     type="button"
+                    data-testid="decrement-product"
+                    disabled={product.amount <= 1}
                     onClick={() => handleProductDecrement(product)}
                   >
                     <MdRemoveCircleOutline size={20} />
@@ -63,6 +65,7 @@ export default function ProductsCartTable({ products }) {
                   />
                   <button
                     type="button"
+                    data-testid="increment-product"
                     onClick={() => handleProductIncrement(product)}
                   >
                     <MdAddCircleOutline size={20} />
@@ -70,6 +73,7 @@ export default function ProductsCartTable({ products }) {
                 </div>
                 <button
                   type="button"
+                  data-testid="remove-product"
                   onClick={() => handleRemoveProduct(product.id)}
                 >
                   <MdDelete size={20} />

@@ -36,6 +36,8 @@ export default function Home() {
       setProducts(resultProducts);
     }
 
+    document.title = 'Home | PlayStore';
+
     loadProducts();
   }, []);
 
@@ -63,7 +65,6 @@ export default function Home() {
         <span>Ordenar por</span>
         <select
           name="order"
-          id="order"
           value={orderProducts}
           onChange={e => handleOrderProducts(e)}
         >
@@ -86,8 +87,12 @@ export default function Home() {
             />
             <strong>{product.name}</strong>
             <span>{product.priceFormatted}</span>
-            <button type="button" onClick={() => handleAddProduct(product.id)}>
-              <div>
+            <button
+              type="button"
+              data-testid="add-product-button"
+              onClick={() => handleAddProduct(product.id)}
+            >
+              <div data-testid="cart-product-quantity">
                 <MdAddShoppingCart size={16} color="#FFF" />
                 {cartItemsAmount[product.id] || 0}
               </div>

@@ -39,6 +39,10 @@ export default function Cart() {
   );
 
   useEffect(() => {
+    document.title = 'Carrinho | PlayStore';
+  }, []);
+
+  useEffect(() => {
     if (productsCostTotal > 250) {
       setTransportFree(true);
     } else {
