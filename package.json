@@ -8,6 +8,7 @@
     "server": "json-server data.json --port 3333",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "coverage": "react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject"
   },
   "browserslist": {
